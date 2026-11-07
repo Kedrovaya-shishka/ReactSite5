@@ -1,0 +1,110 @@
+$primary: #3cb550;
+$orange: #f7941d;
+$text: #2d2d2d;
+$text-muted: #999;
+$white: #ffffff;
+$border: #e0e0e0;
+
+@mixin flex($justify: flex-start, $align: center) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+%link-base {
+    text-decoration: none;
+    font-size: 15px;
+    font-family: inherit;
+    transition: color 0.2s;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.07);
+
+    .nav {
+        max-width: 1200px;
+        margin: {
+            left: auto;
+            right: auto;
+        }
+        height: 68px;
+        @include flex(space-between);
+        padding: {
+            left: 28px;
+            right: 28px;
+        }
+
+        .logo {
+            @include flex;
+            img {
+                height: 36px;
+                object-fit: contain;
+            }
+        }
+
+        .menu {
+            list-style: none;
+            @include flex(center);
+            gap: 30px;
+
+            li {
+                .link {
+                    @extend %link-base;
+                    color: $text;
+
+                    &:hover {
+                        color: $primary;
+                    }
+                }
+
+                .active {
+                    color: $primary;
+                    font-weight: 600;
+                }
+            }
+        }
+
+        .actions {
+            @include flex;
+            gap: 18px;
+
+            .register {
+                @extend %link-base;
+                background: none;
+                border: none;
+                padding: 0;
+                cursor: pointer;
+                color: $primary;
+                font-weight: 500;
+
+                &:hover {
+                    color: #2d9940;
+                }
+            }
+
+            .loginBtn {
+                background: $primary;
+                color: $white;
+                border: none;
+                border-radius: 50px;
+                padding: 10px 26px;
+                font-size: 15px;
+                font-weight: 500;
+                cursor: pointer;
+                font-family: inherit;
+                transition: background 0.2s;
+
+                &:hover {
+                    background: #2d9940;
+                }
+            }
+        }
+    }
+}

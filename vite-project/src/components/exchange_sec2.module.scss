@@ -1,0 +1,174 @@
+$primary: #3cb550;
+$text: #2d2d2d;
+$text-muted: #888;
+$white: #ffffff;
+$bg: #f8f8fc;
+$border: #e8e8e8;
+
+@mixin flex($justify: flex-start, $align: center) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+%input-base {
+    border: none;
+    border-bottom: 1px solid $border;
+    background: transparent;
+    font-size: 14px;
+    font-family: inherit;
+    color: $text;
+    outline: none;
+    padding: 4px 0;
+}
+
+.Exchange_sec2 {
+    width: 100%;
+    background: $white;
+    padding: {
+        top: 44px;
+        bottom: 70px;
+    }
+    .wrap {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 28px;
+        .topBar {
+            @include flex(space-between, center);
+            margin-bottom: 28px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid $border;
+            h2 {
+                font-size: 20px;
+                font-weight: 700;
+                color: $text;
+            }
+            .filters {
+                @include flex;
+                gap: 14px;
+                .priceWrap {
+                    position: relative;
+                    display: inline-block;
+                    .priceHint {
+                        position: absolute;
+                        left: 0;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        color: $text-muted;
+                        font-size: 14px;
+                        pointer-events: none;
+                    }
+                }
+                .priceInput {
+                    @extend %input-base;
+                    width: 150px;
+                    &::-webkit-outer-spin-button,
+                    &::-webkit-inner-spin-button {
+                        -webkit-appearance: none;
+                    }
+                }
+                .sep {
+                    color: $text-muted;
+                    font-size: 14px;
+                }
+                .sortSelect {
+                    border: 1px solid $border;
+                    border-radius: 6px;
+                    background: $white;
+                    font-size: 14px;
+                    font-family: inherit;
+                    color: $primary;
+                    padding: 6px 30px 6px 12px;
+                    outline: none;
+                    cursor: pointer;
+                    appearance: none;
+                    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+                    background-repeat: no-repeat;
+                    background-position: right 10px center;
+                }
+            }
+        }
+        .list {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            .card {
+                @include flex(space-between, flex-start);
+                gap: 24px;
+                padding: 24px 0;
+                border-bottom: 1px solid $border;
+                .left {
+                    flex: 1;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 16px;
+                    h3 {
+                        font-size: 18px;
+                        font-weight: 700;
+                        color: $text;
+                    }
+                    .clientRow {
+                        @include flex;
+                        gap: 14px;
+                        .avatar {
+                            width: 54px;
+                            height: 54px;
+                            border-radius: 50%;
+                            object-fit: cover;
+                            flex-shrink: 0;
+                        }
+                        .clientInfo {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 3px;
+                            .clientName {
+                                font-size: 14px;
+                                font-weight: 600;
+                                color: $text;
+                            }
+                            .clientProjects {
+                                font-size: 13px;
+                                color: $text-muted;
+                            }
+                            .ratingRow {
+                                @include flex;
+                                gap: 8px;
+                                .stars {
+                                    height: 18px;
+                                    object-fit: contain;
+                                }
+                                .reviews {
+                                    font-size: 13px;
+                                    color: $text-muted;
+                                }
+                            }
+                        }
+                    }
+                }
+                .right {
+                    flex-shrink: 0;
+                    min-width: 200px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-end;
+                    gap: 6px;
+                    padding-top: 4px;
+                    .budget {
+                        font-size: 16px;
+                        font-weight: 700;
+                        color: $primary;
+                    }
+                    .time {
+                        font-size: 13px;
+                        color: $text-muted;
+                    }
+                    .proposals {
+                        font-size: 13px;
+                        color: $text-muted;
+                        margin-top: 10px;
+                    }
+                }
+            }
+        }
+    }
+}

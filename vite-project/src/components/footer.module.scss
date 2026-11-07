@@ -1,0 +1,84 @@
+$text: #2d2d2d;
+$text-muted: #888;
+$white: #ffffff;
+$bg: #ebebf5;
+
+@mixin flex($justify: flex-start, $align: center) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+.footer {
+    width: 100%;
+    background: $bg;
+    padding: {
+        top: 60px;
+        bottom: 0;
+    }
+    .wrap {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 28px;
+        .cols {
+            @include flex(space-between, flex-start);
+            gap: 40px;
+            padding-bottom: 48px;
+            .col {
+                flex: 1;
+                h4 {
+                    font-size: 16px;
+                    font-weight: 700;
+                    color: $text;
+                    margin-bottom: 18px;
+                }
+                ul {
+                    list-style: none;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    li {
+                        font-size: 14px;
+                        color: $text-muted;
+                        cursor: pointer;
+                        transition: color 0.2s;
+                        &:hover {
+                            color: $text;
+                        }
+                    }
+                }
+                .socials {
+                    @include flex;
+                    gap: 10px;
+                    .socialBtn {
+                        background: none;
+                        border: none;
+                        cursor: pointer;
+                        padding: 0;
+                        transition: transform 0.2s;
+                        img {
+                            width: 36px;
+                            height: 36px;
+                            object-fit: contain;
+                        }
+                        &:hover {
+                            transform: translateY(-2px);
+                        }
+                    }
+                }
+            }
+        }
+        .copy {
+            border-top: 1px solid #d8d8e8;
+            padding: {
+                top: 20px;
+                bottom: 20px;
+            }
+            @include flex(center, center);
+            p {
+                font-size: 13px;
+                color: $text-muted;
+            }
+        }
+    }
+}

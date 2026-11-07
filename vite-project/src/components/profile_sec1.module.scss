@@ -1,0 +1,271 @@
+$primary: #3cb550;
+$orange: #f7941d;
+$text: #2d2d2d;
+$text-muted: #555555;
+$white: #ffffff;
+$bg: #f8f8fc;
+$border: #e0e0e0;
+$light-purple: #f0f0f8;
+
+@mixin flex($justify: flex-start, $align: center) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+%badge-card {
+    position: absolute;
+    background: $white;
+    border-radius: 50px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+    z-index: 3;
+}
+
+.Profile_sec1 {
+    width: 100%;
+    min-height: 90vh;
+    background: $bg;
+    position: relative;
+    padding: {
+        top: 120px;
+        bottom: 60px;
+    }
+
+    .sideBadge {
+        position: absolute;
+        top: 260px;
+        left: 0;
+        background: $orange;
+        color: $white;
+        border-radius: 0 50px 50px 0;
+        padding: 14px 24px 14px 18px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        z-index: 10;
+        @include flex;
+        gap: 12px;
+        box-shadow: 0 4px 12px rgba(247, 148, 29, 0.3);
+        transition: background 0.2s;
+
+        &:hover {
+            background: #d97210;
+        }
+
+        .badgeArrow {
+            font-size: 16px;
+            font-weight: 700;
+        }
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 28px;
+        @include flex(space-between, center);
+        gap: 40px;
+
+        .left {
+            flex: 0 0 52%;
+            max-width: 52%;
+            display: flex;
+            flex-direction: column;
+
+            .profession {
+                font-size: 16px;
+                font-weight: 600;
+                color: $orange;
+                margin-bottom: 8px;
+            }
+
+            h1 {
+                font-size: 38px;
+                font-weight: 700;
+                color: $text;
+                line-height: 1.25;
+                margin-bottom: 18px;
+
+                .accent {
+                    color: $primary;
+                }
+            }
+
+            .bio {
+                font-size: 14px;
+                color: $text-muted;
+                line-height: 1.65;
+                margin-bottom: 24px;
+            }
+
+            .tags {
+                @include flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                margin-bottom: 28px;
+
+                .tag {
+                    background: transparent;
+                    border: 1px solid $border;
+                    border-radius: 6px;
+                    padding: 6px 16px;
+                    font-size: 13px;
+                    color: #444;
+                    transition: border-color 0.2s, color 0.2s;
+                    cursor: default;
+
+                    &:hover {
+                        border-color: $primary;
+                        color: $primary;
+                    }
+                }
+            }
+
+            .detailsBtn {
+                @include flex(space-between, center);
+                background: $light-purple;
+                border: none;
+                border-radius: 12px;
+                padding: 14px 20px;
+                width: 100%;
+                max-width: 440px;
+                font-size: 15px;
+                font-weight: 500;
+                color: $text;
+                font-family: inherit;
+                cursor: pointer;
+                transition: background 0.2s;
+
+                &:hover {
+                    background: #e3e3f0;
+                }
+
+                .arrow {
+                    font-size: 18px;
+                    color: $text;
+                }
+            }
+        }
+
+        .right {
+            flex: 0 0 44%;
+            max-width: 44%;
+            @include flex(center, center);
+
+            .visual {
+                position: relative;
+                width: 420px;
+                height: 420px;
+
+                .decorCircleTop {
+                    position: absolute;
+                    top: -50px;
+                    left: 20px;
+                    width: 100px;
+                    height: 100px;
+                    z-index: 0;
+                }
+
+                .decorCircleBot {
+                    position: absolute;
+                    bottom: -30px;
+                    right: -20px;
+                    width: 170px;
+                    height: 170px;
+                    z-index: 0;
+                }
+
+                .dotsPattern {
+                    position: absolute;
+                    bottom: 20px;
+                    left: -40px;
+                    width: 76px;
+                    height: 60px;
+                    background-image: radial-gradient(circle, rgba(247, 148, 29, 0.45) 2px, transparent 2px);
+                    background-size: 12px 12px;
+                    z-index: 0;
+                }
+
+                .zigzag {
+                    position: absolute;
+                    top: 100px;
+                    right: -20px;
+                    width: 60px;
+                    height: 30px;
+                    object-fit: contain;
+                    z-index: 0;
+                }
+
+                .avatarWrapper {
+                    position: relative;
+                    width: 100%;
+                    height: 100%;
+                    z-index: 2;
+
+                    .avatar {
+                        width: 100%;
+                        height: 100%;
+                        border-radius: 50%;
+                        object-fit: cover;
+                        display: block;
+                    }
+
+                    .onlineBadge {
+                        @extend %badge-card;
+                        top: 150px;
+                        left: -50px;
+                        padding: 8px 18px;
+                        @include flex;
+                        gap: 8px;
+                        font-size: 13px;
+                        font-weight: 500;
+                        color: $primary;
+
+                        .onlineDot {
+                            width: 8px;
+                            height: 8px;
+                            border-radius: 50%;
+                            background: $primary;
+                        }
+                    }
+
+                    .settingsBtn {
+                        position: absolute;
+                        top: 24px;
+                        right: 28px;
+                        background: none;
+                        border: none;
+                        padding: 0;
+                        cursor: pointer;
+                        z-index: 4;
+                        transition: transform 0.2s;
+
+                        img {
+                            width: 44px;
+                            height: 44px;
+                            display: block;
+                        }
+
+                        &:hover {
+                            transform: rotate(30deg);
+                        }
+                    }
+
+                    .starsCard {
+                        @extend %badge-card;
+                        bottom: 0px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        padding: 10px 24px;
+                        border-radius: 14px;
+                        @include flex(center, center);
+
+                        img {
+                            height: 22px;
+                            object-fit: contain;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

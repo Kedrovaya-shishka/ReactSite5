@@ -1,0 +1,127 @@
+$primary: #3cb550;
+$text: #2d2d2d;
+$text-muted: #666;
+$white: #ffffff;
+$bg: #f8f8fc;
+$all-bg: #eeeef8;
+$border: #e8e8e8;
+
+@mixin flex($justify: flex-start, $align: center) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+%btn-base {
+    width: 100%;
+    padding: 11px;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.22s;
+}
+
+.Home_sec2 {
+    width: 100%;
+    background: $bg;
+    padding: {
+        top: 60px;
+        bottom: 70px;
+    }
+    .wrap {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 28px;
+        h2 {
+            font-size: 28px;
+            font-weight: 700;
+            color: $text;
+            margin-bottom: 30px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            .card {
+                background: $white;
+                border-radius: 12px;
+                border: 1px solid $border;
+                padding: 24px;
+                display: flex;
+                flex-direction: column;
+                gap: 14px;
+                .cardHead {
+                    @include flex;
+                    gap: 12px;
+                    img {
+                        width: 46px;
+                        height: 46px;
+                        border-radius: 50%;
+                        object-fit: cover;
+                        flex-shrink: 0;
+                    }
+                    h3 {
+                        font-size: 15px;
+                        font-weight: 600;
+                        color: $text;
+                        line-height: 1.35;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 2;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
+                    }
+                }
+                p {
+                    font-size: 14px;
+                    color: $text-muted;
+                    line-height: 1.65;
+                    flex: 1;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 5;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                }
+                .btn {
+                    @extend %btn-base;
+                    border: 1.5px solid $primary;
+                    background: $white;
+                    color: $primary;
+                    &:hover {
+                        background: $primary;
+                        color: $white;
+                    }
+                }
+                .btnFilled {
+                    background: $primary;
+                    color: $white;
+                    border-color: $primary;
+                    &:hover {
+                        background: #2d9940;
+                        border-color: #2d9940;
+                    }
+                }
+            }
+            .cardAll {
+                background: $all-bg;
+                border-radius: 12px;
+                @include flex(center, center);
+                min-height: 100px;
+                .allBtn {
+                    background: none;
+                    border: none;
+                    color: $primary;
+                    font-size: 16px;
+                    font-weight: 500;
+                    font-family: inherit;
+                    cursor: pointer;
+                    transition: color 0.2s;
+                    &:hover {
+                        color: #2d9940;
+                    }
+                }
+            }
+        }
+    }
+}

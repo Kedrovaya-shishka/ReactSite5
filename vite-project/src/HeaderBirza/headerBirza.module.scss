@@ -1,0 +1,120 @@
+$primary: #3cb550;
+$orange: #f7941d;
+$text: #2d2d2d;
+$text-muted: #999;
+$white: #ffffff;
+$border: #e0e0e0;
+
+@mixin flex($justify: flex-start, $align: center) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+%link-base {
+    text-decoration: none;
+    font-size: 15px;
+    font-family: inherit;
+    transition: color 0.2s;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.07);
+
+    .nav {
+        max-width: 1200px;
+        margin: {
+            left: auto;
+            right: auto;
+        }
+        height: 68px;
+        @include flex(space-between);
+        padding: {
+            left: 28px;
+            right: 28px;
+        }
+
+        .logo {
+            @include flex;
+            img {
+                height: 36px;
+                object-fit: contain;
+            }
+        }
+
+        .menu {
+            list-style: none;
+            @include flex(center);
+            gap: 30px;
+
+            li {
+                .link {
+                    @extend %link-base;
+                    color: $text;
+
+                    &:hover {
+                        color: $primary;
+                    }
+                }
+
+                .active {
+                    color: $primary;
+                    font-weight: 600;
+                }
+            }
+        }
+
+        .userArea {
+            @include flex;
+            gap: 10px;
+
+            .iconBtn {
+                background: none;
+                border: none;
+                font-size: 18px;
+                cursor: pointer;
+                color: $text-muted;
+                padding: 4px;
+                transition: color 0.2s;
+
+                &:hover {
+                    color: $text;
+                }
+            }
+
+            .userInfo {
+                @include flex;
+                gap: 10px;
+                margin-left: 8px;
+                cursor: pointer;
+                text-decoration: none;
+                color: inherit;
+
+                .userName {
+                    font-size: 15px;
+                    font-weight: 500;
+                    color: $text;
+                }
+
+                .userAvatar {
+                    width: 38px;
+                    height: 38px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                }
+
+                .chevron {
+                    font-size: 14px;
+                    color: $text-muted;
+                }
+            }
+        }
+    }
+}

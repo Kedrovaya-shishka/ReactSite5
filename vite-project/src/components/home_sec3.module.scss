@@ -1,0 +1,145 @@
+$primary: #3cb550;
+$orange: #f7941d;
+$text: #2d2d2d;
+$text-muted: #888;
+$white: #ffffff;
+$bg: #f8f8fc;
+$all-bg: #eeeef8;
+$border: #e8e8e8;
+
+@mixin flex($justify: flex-start, $align: center) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+%btn-base {
+    width: 100%;
+    padding: 11px;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.22s;
+}
+
+.Home_sec3 {
+    width: 100%;
+    background: $bg;
+    padding: {
+        top: 60px;
+        bottom: 70px;
+    }
+    .wrap {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 28px;
+        h2 {
+            font-size: 28px;
+            font-weight: 700;
+            color: $text;
+            margin-bottom: 30px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            .card {
+                background: $white;
+                border-radius: 12px;
+                border: 1px solid $border;
+                padding: 22px;
+                display: flex;
+                flex-direction: column;
+                gap: 18px;
+                .cardTop {
+                    @include flex;
+                    gap: 14px;
+                    .avatarWrap {
+                        position: relative;
+                        flex-shrink: 0;
+                        .avatar {
+                            width: 70px;
+                            height: 70px;
+                            border-radius: 50%;
+                            object-fit: cover;
+                        }
+                        .dot {
+                            position: absolute;
+                            bottom: 3px;
+                            right: 3px;
+                            width: 13px;
+                            height: 13px;
+                            border-radius: 50%;
+                            background: $primary;
+                            border: 2px solid $white;
+                        }
+                    }
+                    .info {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 3px;
+                        h3 {
+                            font-size: 15px;
+                            font-weight: 600;
+                            color: $text;
+                        }
+                        .role {
+                            font-size: 13px;
+                            font-weight: 500;
+                            color: $orange;
+                        }
+                        .projects {
+                            font-size: 13px;
+                            color: $text-muted;
+                        }
+                        .stars {
+                            height: 20px;
+                            object-fit: contain;
+                            margin-top: 2px;
+                        }
+                    }
+                }
+                .btn {
+                    @extend %btn-base;
+                    border: 1.5px solid $primary;
+                    background: $white;
+                    color: $primary;
+                    &:hover {
+                        background: $primary;
+                        color: $white;
+                    }
+                }
+                .btnFilled {
+                    background: $primary;
+                    color: $white;
+                    border-color: $primary;
+                    &:hover {
+                        background: #2d9940;
+                        border-color: #2d9940;
+                    }
+                }
+            }
+            .cardAll {
+                background: $all-bg;
+                border-radius: 12px;
+                @include flex(center, center);
+                min-height: 120px;
+                .allBtn {
+                    background: none;
+                    border: none;
+                    color: $primary;
+                    font-size: 16px;
+                    font-weight: 500;
+                    font-family: inherit;
+                    cursor: pointer;
+                    transition: color 0.2s;
+                    &:hover {
+                        color: #2d9940;
+                    }
+                }
+            }
+        }
+    }
+}
